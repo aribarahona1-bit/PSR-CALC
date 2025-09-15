@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ND:YAG 1064 Calculadora</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b4f6c">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>ND:YAG 1064 – Calculadora (ADSS)</h1>
+  <p class="sub">Límite ADSS: 100 J/cm² · Pulso 40–120 ms (150 opc.) · Frecuencia 1–3 Hz · FT = Fototipo</p>
+</header>
+
+<main>
+<section class="card">
+  <h2>Parámetros de entrada</h2>
+  <div class="grid">
+    <label>Tipo de vaso
+      <select id="tipo"></select>
+    </label>
+    <label>Diámetro (mm)
+      <select id="diam"></select>
+    </label>
+    <label>Profundidad (mm)
+      <select id="prof"></select>
+    </label>
+    <label>Spot (entrada)
+      <select id="spotEntrada"></select>
+    </label>
+    <label>Fototipo
+      <select id="fototipo">
+        <option>I</option><option>II</option><option>III</option>
+        <option>IV</option><option>V</option><option>VI</option>
+      </select>
+    </label>
+    <label>Piel bronceada
+      <select id="bronceada"><option>No</option><option>Sí</option></select>
+    </label>
+    <label>% reducción bronceado
+      <input id="pctBronceado" type="number" min="0" max="30" step="0.5" value="12.5">
+    </label>
+  </div>
+  <div class="actions">
+    <button id="btnCalc">Calcular</button>
+    <button id="btnReset" class="ghost">Reset</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Resultados</h2>
+  <div class="grid-2">
+    <div>
+      <table>
+        <tbody>
+          <tr><th>Spot sugerido (mm)</th><td id="spotSugerido">—</td></tr>
+          <tr><th>Spot final (mm)</th><td id="spotFinal">—</td></tr>
+          <tr><th>Pulso base (ms)</th><td id="pulsoBase">—</td></tr>
+          <tr><th>Pulso (ajustado por Fototipo) (ms)</th><td id="pulsoFT">—</td></tr>
+          <tr><th>Fluencia base (J/cm²)</th><td id="fluenciaBase">—</td></tr>
+          <tr><th>Fluencia ajustada por Fototipo (J/cm²)</th><td id="fluenciaFT">—</td></tr>
+          <tr><th>Fluencia final (con bronceado) (J/cm²)</th><td id="fluenciaFinal">—</td></tr>
+          <tr><th>Energía por pulso (J)</th><td id="energia">—</td></tr>
+          <tr><th>Frecuencia (Hz)</th><td id="freq">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Notas / Endpoint</h3>
+      <ul id="notas"></ul>
+      <p class="muted">* Endpoint clínico: blanqueamiento/estenosis inmediata, sin púrpura.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Escleroterapia – Calculadora C1·V1 = C2·V2</h2>
+  <div class="grid">
+    <label>C1 (concentración stock, %)
+      <input id="c1" type="number" min="0" step="0.1" value="3">
+    </label>
+    <label>V1 (volumen stock, mL)
+      <input id="v1" type="number" min="0" step="0.1" value="1">
+    </label>
+    <label>C2 (concentración deseada, %)
+      <input id="c2" type="number" min="0" step="0.1" value="0.5">
+    </label>
+    <label>V2 (volumen final, mL)
+      <input id="v2" type="number" min="0" step="0.1" value="6">
+    </label>
+  </div>
+  <div class="actions">
+    <button id="btnDiluir">Calcular dilución</button>
+  </div>
+  <table>
+    <tbody>
+      <tr><th>Resultado</th><td id="dilucionOut">—</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card paywall">
+  <h2>Monetización (opcional)</h2>
+  <p>Este demo incluye un “gancho” simple para paywall. Puedes reemplazarlo con Stripe, Lemon Squeezy o Gumroad.</p>
+  <div class="actions">
+    <button id="unlock" class="primary">Desbloquear PRO (demo)</button>
+    <span id="payStatus" class="muted">Modo gratuito.</span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Funciona offline · Instalable (PWA) · © Tu clínica</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "NDYAG 1064 Calculadora",
+  "short_name": "NDYAG 1064",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b4f6c",
+  "theme_color": "#0b4f6c",
+  "icons": []
+}
